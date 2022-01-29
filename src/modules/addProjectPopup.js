@@ -12,14 +12,13 @@ export const addProjectPopup = () => {
   projectName.setAttribute('placeholder', 'Project Name')
 
   let cancel = document.createElement('input');
-  cancel.classList.add('btn');
+  cancel.classList.add('popupCancel');
   cancel.setAttribute('type', 'button');
   cancel.setAttribute('value', 'Cancel');
 
 
   let addBtn = document.createElement('input');
-  addBtn.classList.add('btn');
-  addBtn.classList.add('submit');
+  addBtn.classList.add('popupAdd');
   addBtn.setAttribute('type', 'button');
   addBtn.setAttribute('value', 'Add');
 
@@ -33,4 +32,10 @@ export const addProjectPopup = () => {
   popup.append(buttonContaier);
 
   return popup;
+}
+
+export const addPopupListenters = (input, cancel, add) => {
+    cancel.addEventListener('click', () => {
+    blurScreen.classList.toggle('hide');
+  });
 }
