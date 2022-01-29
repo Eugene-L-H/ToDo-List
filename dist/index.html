@@ -6,20 +6,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>To-Do List</title>
   <link rel="stylesheet" href="../css/styles.css">
+  <script src="main.js" defer></script>
 </head>
 <body>
-  <header>
-    <input type="button" class="menuButton" value="☰">
-    <h1 class="title">ToDO</h1>
-  </header>
-  <div id="main">
-    <div id="sidebar">
-      <div class="projects">
-        <p class="projectsTitle">Projects</p>
-        <input type="button" class="addProject" value="+ Add Project">
+    <div class="blur-screen">
+      <header>
+        <div class="menuButton">☰</div>
+        <h1 class="title">ToDO</h1>
+      </header>
+      <div id="main">
+        <div id="sidebar">
+          <div class="projects">
+            <p class="projectsTitle">Projects</p>
+            <p class='addProject'>+ Add Project</p>
+            <ul class="projectsList"></ul>
+          </div>
+        </div>
+      <div id="content">
+        <div class="tasks-area">
+          <p class='add-task'><span class="red-plus">+</span> Add Task</p>
+          <ul class="userList"></ul>
+        </div>
       </div>
     </div>
-    <div id="contenet"></div>
-  </div>
 </body>
 </html>

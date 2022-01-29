@@ -7,7 +7,18 @@
 body {
   display: flex;
   flex-direction: column;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   height: 100vh;
+}
+
+.blur-screen {
+  height: 100%;
+  width: 100%;
+}
+
+.blur {
+  /* background-color: rgb(155, 255, 255, .9); */
+  backdrop-filter: blur(2px);
 }
 
 header {
@@ -20,10 +31,10 @@ header {
 
 .menuButton {
   display: none;
-  height: 25px;
-  width: 25px;
-  font-size: 18px;
-  margin: 0 auto 0 1vh;
+  font-size: 3.5vh;
+  color: #fff;
+  background-color: #db4c3f;
+  margin: 0 auto 0 1.5vh;
 }
 
 .title {
@@ -33,11 +44,15 @@ header {
 }
 
 #main {
-  height: 95.5%;
   display: flex;
+  justify-content: center;
+  height: 95.5%;
 }
 
 #sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   height: 100%;
   width: 15.85%;
   background-color: #fafafa;
@@ -47,30 +62,117 @@ header {
   display: flex;
   flex-direction: column;
   font-size: 3vh;
-  margin: 10% 0 0 5%;
+  margin: 10% 25% 0 0;
+}
+
+.projectsTitle {
+  padding: 0 0.5vh 0.25vh 0;
+  border-bottom: solid 1px #aaa;;
+  border-right: solid 1px #ccc;
 }
 
 .addProject {
-  font-size: 2vh;
-  text-decoration: none;
-  border: none;
-  margin-top: 5%;
+  width: 100%;
+  font-size: 1.8vh;
+  text-decoration: none;  
+  margin: 10% 0 0 25%;
+}
+
+.addProject:hover {
+  cursor: pointer;;
+  text-decoration: underline;
+}
+
+/* addProjectPopup.js */
+.projectPopup {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  width:20%;
+  height:30%;
+  min-height: 450px;
+  min-width: 300px;
+  border: solid 1px #ccc;
+  border-radius: 2%;
+  align-self: center;
+  z-index: 1;
+}
+
+.popupTitle {
+  width: 100%;
+  overflow: hidden;
+  text-align: center;
+  background-color: #ccc;
+  border-bottom: solid 1px #aaa;
+  padding: 15% 0 3% 0;
+}
+
+.inputProjectName {
+  padding: 0.5vw 0 0 0; 
+  margin-bottom: 50%;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: end;
+  width: 100%;
+  margin-bottom: 3.5%;
+}
+
+.buttonContainer > input {
+  padding: 0.5vh 1vh;
+  margin-right: 5%;
+}
+
+.buttonContainer > input:nth-child(1) {
+  margin-right: 5%;
 }
 
 #content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   height: 100%;
   width: 84.15%;
 }
 
+.add-task {
+  cursor: pointer;
+  color: #aaa;
+  font-size: 1.65vh;
+}
+
+.red-plus {
+  position: relative;
+  color: #db4c3f;
+  border-radius: 50%;
+  padding: 0 0.5vh;
+}
+
+.add-task:hover {
+  color: #db4c3f;
+}
+
+.red-plus:hover {
+  background-color: #db4c3f;
+  color: #fff;
+}
+
+
 @media screen and (max-width: 800px) {
-  header {
-    height: 7%;
+  
+  .title {
+    font-size: 3vh;
   }
-
+  
   .menuButton {
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
-
+  
   #sidebar {
     display: none;
   }
