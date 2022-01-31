@@ -33,10 +33,38 @@ header {
 
 .menuButton {
   display: none;
+  height: 80%;
   font-size: 3.5vh;
+  text-align: center;
   color: #fff;
   background-color: #db4c3f;
+  padding: 0 1px;
+  margin: 3px 0 0 2px;
   margin: 0 auto 0 1.5vh;
+}
+
+.menuButton:hover {
+  background-color: #da8179;
+}
+
+.mobileMenu {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 175px;
+  width: 175px;
+  color: #fff;
+  border: solid 1px #aaa;
+  border-top: 0;
+  background-color: rgb(50, 50, 50, 0.6);
+}
+
+.mobileMenu p {
+  font-size: 14px;
+  text-align: center;
+  margin: 0;
 }
 
 .title {
@@ -47,7 +75,6 @@ header {
 
 #main {
   display: flex;
-  justify-content: center;
   height: 95.5%;
 }
 
@@ -109,7 +136,9 @@ header {
   text-align: center;
   background-color: #ccc;
   border-bottom: solid 1px #aaa;
+  border-radius: 3% 3% 0 0;
   padding: 15% 0 3% 0;
+  margin-top: -0.5px;
 }
 
 .inputProjectName {
@@ -184,6 +213,13 @@ header {
   }
   
   #sidebar {
+    display: none;
+  }
+
+}
+
+@media screen and (min-width: 800px) {
+  .mobileMenu {
     display: none;
   }
 }

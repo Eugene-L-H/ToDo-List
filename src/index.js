@@ -1,31 +1,26 @@
-import { addProjectPopup } from "./modules/addProjectPopup";
-
+import { addPopupBehavior } from "./modules/addProjectPopup";
 import { Project } from "./modules/project";
 import { Task } from "./modules/project";
 import { Projects } from "./modules/project";
+import { createMobileMenu } from "./modules/mobileMenu";
 
 const blurScreen = document.querySelector('.blur-screen');
+const mobileMenuBtn = document.querySelector('.menuButton');
 const mainArea = document.querySelector('#main');
 const taskArea = document.querySelector('#content');
 const addProject = document.querySelector('.addProject');
-// const popupCancelBtn = document.querySelector('.popupCancel');
-// const popupAddBtn = document.querySelector('.popupAdd');
+const mobileMenu = document.querySelector('.mobileMenuContainer');
 
+// Generate mobile menu content
+mobileMenu.append(createMobileMenu());
 
 // "Add Project" button in sidebar.
 addProject.addEventListener('click', () => {
-  blurScreen.classList.toggle('hide');
-  console.log('under blur command');
-  mainArea.append(addProjectPopup());
+  addPopupBehavior(blurScreen, mainArea);
+});
 
-  // Register popup buttons and input field to DOM
-  const popupInputProjectName = document.querySelector('.inputProjectName');
-  const popupCancelBtn = document.querySelector('.popupCancel');
-  const popupAddBtn = document.querySelector('.popupAdd');
-  popupCancelBtn.addEventListener('click', () => {
-    blurScreen.classList.toggle('hide');
-    // Delete popup element.
-    mainArea.removeChild(mainArea.lastElementChild);
-  });;
+// Mobile menu button
+mobileMenuBtn.addEventListener('click', () => {
+  mobileMenu.classList.toggle('hide');
 });
 

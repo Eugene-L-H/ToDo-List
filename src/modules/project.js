@@ -6,7 +6,7 @@ export class Project {
 }
 
 export class Task {
-  constructor(name, date, time, description) {
+  constructor(name, date, time, description, dueDate, priority) {
     this.name = name;
   }
 }
