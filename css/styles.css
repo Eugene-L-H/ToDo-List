@@ -8,6 +8,7 @@ body {
   flex-direction: column;
   font-family: 'Courier New', Courier, monospace;
   height: 100vh;
+  min-width: 325px;
 }
 
 .blur-screen {

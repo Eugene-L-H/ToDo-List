@@ -34,17 +34,18 @@ export const addProjectPopup = () => {
   return popup;
 }
 
-export const addPopupBehavior = (blurScreen, mainArea) => {
+export const popupBehavior = (blurScreen, popupContainer) => {
   blurScreen.classList.toggle('hide');
-  mainArea.append(addProjectPopup());
+  popupContainer.classList.toggle('hide');
+}
 
-  // Register popup buttons and input field to DOM
+export const addPopupFunctionality = (blurScreen, popupContainer) => {
+    // Register popup buttons and input field to DOM
   const popupInputProjectName = document.querySelector('.inputProjectName');
   const popupCancelBtn = document.querySelector('.popupCancel');
   const popupAddBtn = document.querySelector('.popupAdd');
-  popupCancelBtn.addEventListener('click', () => {
-  blurScreen.classList.toggle('hide');
-    // Delete popup element.
-    mainArea.removeChild(mainArea.lastElementChild);
+  popupCancelBtn.addEventListener('click', () => {;
+    blurScreen.classList.toggle('hide');
+    popupContainer.classList.toggle('hide');
   });
 }
