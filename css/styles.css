@@ -3,12 +3,17 @@
   padding: 0;
 }
 
+html {
+  display: flex;
+  flex-direction: column;
+}
+
 body {
   display: flex;
   flex-direction: column;
   font-family: 'Courier New', Courier, monospace;
   height: 100vh;
-  min-width: 325px;
+  min-width: 320px;
 }
 
 .blur-screen {
@@ -109,19 +114,27 @@ header {
 }
 
 .addProject:hover {
-  cursor: pointer;;
+  cursor: pointer;
   text-decoration: underline;
 }
 
 /* addProjectPopup.js */
+.popupContainer {
+  position: absolute;
+  margin-left: auto;
+  min-height: 450px;
+  min-width: 300px;
+  align-self: center;
+  justify-self: center;
+  margin-top: 20vh;
+}
+
 .projectPopup {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   position: absolute;
-  width:20%;
-  height:30%;
   min-height: 450px;
   min-width: 300px;
   background-color: #fafafa;
@@ -213,6 +226,10 @@ header {
     align-items: center;
   }
   
+  .popupContainer {
+    margin-top: 10vh;
+  }
+
   #sidebar {
     display: none;
   }
