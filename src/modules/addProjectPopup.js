@@ -39,13 +39,35 @@ export const popupBehavior = (blurScreen, popupContainer) => {
   popupContainer.classList.toggle('hide');
 }
 
-export const addPopupFunctionality = (blurScreen, popupContainer) => {
-    // Register popup buttons and input field to DOM
-  const popupInputProjectName = document.querySelector('.inputProjectName');
-  const popupCancelBtn = document.querySelector('.popupCancel');
-  const popupAddBtn = document.querySelector('.popupAdd');
-  popupCancelBtn.addEventListener('click', () => {;
+export const addPopupFunctionality = (blurScreen, popupContainer, ProjectObj, userProjects) => {
+  // Register popup buttons and input field to DOM
+  const projectName = document.querySelector('.inputProjectName');
+  const cancelBtn = document.querySelector('.popupCancel');
+  const addBtn = document.querySelector('.popupAdd');
+  const sidebarProjectList = document.querySelector('.projectsList');
+
+  cancelBtn.addEventListener('click', () => {;
     blurScreen.classList.toggle('hide');
     popupContainer.classList.toggle('hide');
+    document.querySelector('.inputProjectName').value = '';
+  });
+
+  addBtn.addEventListener('click', () => {
+    if (projectName.value === '') return;
+    
+    // Create project object
+    const newProject = new ProjectObj(projectName.value);
+    console.log(newProject.title);
+    userProjects.push(newProject);
+
+    // Populate project list in sidebar
+    sidebarProjectList.innerHTML = '';
+    for (let project of userProjects) {
+      let para = document.createElement('p');
+      console.log(project.title);
+      para.textContent = project.title;
+      console.log(para);
+      sidebarProjectList.append(para);
+    }
   });
 }

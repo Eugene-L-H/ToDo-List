@@ -1,16 +1,16 @@
-export class Project {
+export class ProjectObj {
   constructor(title) {
     this.title = title;
-    this.tasks = [];
   }
+  tasks = [];
 }
 
-export class Task {
+export class TaskObj {
   constructor(name, date, time, description, dueDate, priority) {
     this.name = name;
   }
 }
 
-export const Projects = (() => {
-  let projectList = [];
-})();
+export const Projects = {
+  'registeredProjects': []
+}
