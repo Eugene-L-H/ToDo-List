@@ -39,7 +39,27 @@ export const popupBehavior = (blurScreen, popupContainer) => {
   popupContainer.classList.toggle('hide');
 }
 
-export const addPopupFunctionality = (blurScreen, popupContainer, ProjectObj, userProjects) => {
+const displayProjectInTaskArea = (displayTitle, userProjectsMain) => {
+  const projectDiv = document.createElement('div');
+
+  const title = document.createElement('h2');
+  title.textContent = displayTitle;
+
+  let projectTaskList = document.createElement('ul');
+
+  const currentProject = userProjectsMain[title];
+
+  projectDiv.append(title);
+  return projectDiv;
+}
+
+export const addPopupFunctionality = (
+  blurScreen,
+  popupContainer,
+  ProjectObj,
+  userProjectsMain,
+  tasksArea
+  ) => {
   // Register popup buttons and input field to DOM
   const projectName = document.querySelector('.inputProjectName');
   const cancelBtn = document.querySelector('.popupCancel');
@@ -57,17 +77,24 @@ export const addPopupFunctionality = (blurScreen, popupContainer, ProjectObj, us
     
     // Create project object
     const newProject = new ProjectObj(projectName.value);
-    console.log(newProject.title);
-    userProjects.push(newProject);
+    userProjectsMain[projectName.value] = newProject;
 
     // Populate project list in sidebar
-    sidebarProjectList.innerHTML = '';
-    for (let project of userProjects) {
-      let para = document.createElement('p');
-      console.log(project.title);
-      para.textContent = project.title;
-      console.log(para);
-      sidebarProjectList.append(para);
-    }
+
+    let para = document.createElement('li');
+    // para.setAttribute('value', project.title);
+    para.textContent = newProject.title;
+
+    para.addEventListener('click', (e) => {
+      tasksArea.innerHTML = '';
+      const displayTitle = e.target.textContent;
+      tasksArea.append(displayProjectInTaskArea(displayTitle, userProjectsMain,));
+    });
+
+    sidebarProjectList.append(para);
+    
+    blurScreen.classList.toggle('hide');
+    popupContainer.classList.toggle('hide');
+    document.querySelector('.inputProjectName').value = '';
   });
 }

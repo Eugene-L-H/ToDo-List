@@ -10,7 +10,3 @@ export class TaskObj {
     this.name = name;
   }
 }
-
-export const Projects = {
-  'registeredProjects': []
-}

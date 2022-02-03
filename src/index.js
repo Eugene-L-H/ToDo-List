@@ -6,8 +6,11 @@ import { popupBehavior } from "./modules/addProjectPopup";
 import { addProjectPopup } from "./modules/addProjectPopup";
 import { addPopupFunctionality } from "./modules/addProjectPopup";
 
+const mainArea = document.querySelector('#main');
+const tasksArea = document.querySelector('.tasks-area');
+
 // Object that will hold all project objects
-let userProjects = Projects.registeredProjects;
+let userProjectsMain = {};
 
 const blurScreen = document.querySelector('.blur-screen');
 
@@ -19,10 +22,13 @@ mobileMenu.append(createMobileMenu());
 // Add project popup.
 const popupContainer = document.querySelector('.popupContainer');
 popupContainer.append(addProjectPopup());
-addPopupFunctionality(blurScreen, popupContainer, ProjectObj, userProjects);
-
-const mainArea = document.querySelector('#main');
-const taskArea = document.querySelector('#content');
+addPopupFunctionality(
+  blurScreen,
+  popupContainer,
+  ProjectObj,
+  userProjectsMain,
+  tasksArea
+  );
 
 // Eventlisteners for '+ Add Project' buttons
 const addProjectBtns = document.getElementsByClassName('addProject');
@@ -31,6 +37,8 @@ for (let button of addProjectBtns) {
     popupBehavior(blurScreen, popupContainer);
   });
 }
+
+// Projects added to the sidebar 
 
 
 
