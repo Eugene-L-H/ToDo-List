@@ -39,17 +39,26 @@ export const popupBehavior = (blurScreen, popupContainer) => {
   popupContainer.classList.toggle('hide');
 }
 
-const displayProjectInTaskArea = (displayTitle, userProjectsMain) => {
+export const displayProjectInTaskArea = (displayTitle, userProjectsMain) => {
   const projectDiv = document.createElement('div');
 
   const title = document.createElement('h2');
   title.textContent = displayTitle;
 
+  const taskList = document.createElement('ul');
+  console.log(userProjectsMain[displayTitle]);
+
   let projectTaskList = document.createElement('ul');
+  for (let task of userProjectsMain[displayTitle].tasks) {
+    let listItem = document.createElement('li');
+    listItem.textContent = task;
+    taskList.append(listItem);
+  }
 
   const currentProject = userProjectsMain[title];
 
   projectDiv.append(title);
+  projectDiv.append(taskList);
   return projectDiv;
 }
 

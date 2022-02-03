@@ -5,6 +5,7 @@ import { createMobileMenu } from "./modules/mobileMenu";
 import { popupBehavior } from "./modules/addProjectPopup";
 import { addProjectPopup } from "./modules/addProjectPopup";
 import { addPopupFunctionality } from "./modules/addProjectPopup";
+import { displayProjectInTaskArea } from "./modules/addProjectPopup";
 
 const mainArea = document.querySelector('#main');
 const tasksArea = document.querySelector('.tasks-area');
@@ -37,10 +38,6 @@ for (let button of addProjectBtns) {
     popupBehavior(blurScreen, popupContainer);
   });
 }
-
-// Projects added to the sidebar 
-
-
 
 // Mobile menu button
 mobileMenuBtn.addEventListener('click', () => {
