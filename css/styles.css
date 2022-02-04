@@ -206,11 +206,9 @@ header {
 }
 
 .add-task {
-  position: absolute;
-  cursor: pointer;
   color: #aaa;
   font-size: 1.65vh;
-  margin: 7% 0 0 29.5%;
+  margin: 2% 0 0 2.2%;
 }
 
 .red-plus {

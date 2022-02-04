@@ -2,7 +2,7 @@ export class ProjectObj {
   constructor(title) {
     this.title = title;
   }
-  tasks = [1, 2, 3];
+  tasks = [];
 }
 
 export class TaskObj {

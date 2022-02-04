@@ -39,27 +39,20 @@ export const popupBehavior = (blurScreen, popupContainer) => {
   popupContainer.classList.toggle('hide');
 }
 
-export const displayProjectInTaskArea = (displayTitle, userProjectsMain) => {
-  const projectDiv = document.createElement('div');
+const addTaskBtnFunctionality = () => {
+  const addTaskBtn = document.querySelector('.add-task');
 
-  const title = document.createElement('h2');
-  title.textContent = displayTitle;
+  addTaskBtn.addEventListener('click', () => {
+    alert('Add Task');
+  });
+}
 
-  const taskList = document.createElement('ul');
-  console.log(userProjectsMain[displayTitle]);
+const createAddTaskBtn = () => {
+  const addTaskBtn = document.createElement('p');
+  addTaskBtn.classList.add('add-task');
+  addTaskBtn.innerHTML = '<p class="add-task"><span class="red-plus">+</span> Add Task</p>';
 
-  let projectTaskList = document.createElement('ul');
-  for (let task of userProjectsMain[displayTitle].tasks) {
-    let listItem = document.createElement('li');
-    listItem.textContent = task;
-    taskList.append(listItem);
-  }
-
-  const currentProject = userProjectsMain[title];
-
-  projectDiv.append(title);
-  projectDiv.append(taskList);
-  return projectDiv;
+  return addTaskBtn;
 }
 
 export const addPopupFunctionality = (
@@ -69,41 +62,69 @@ export const addPopupFunctionality = (
   userProjectsMain,
   tasksArea
   ) => {
-  // Register popup buttons and input field to DOM
-  const projectName = document.querySelector('.inputProjectName');
-  const cancelBtn = document.querySelector('.popupCancel');
-  const addBtn = document.querySelector('.popupAdd');
-  const sidebarProjectList = document.querySelector('.projectsList');
-
-  cancelBtn.addEventListener('click', () => {;
-    blurScreen.classList.toggle('hide');
-    popupContainer.classList.toggle('hide');
-    document.querySelector('.inputProjectName').value = '';
-  });
-
-  addBtn.addEventListener('click', () => {
-    if (projectName.value === '') return;
+    // Register popup buttons and input field to DOM
+    const projectName = document.querySelector('.inputProjectName');
+    const cancelBtn = document.querySelector('.popupCancel');
+    const addBtn = document.querySelector('.popupAdd');
+    const sidebarProjectList = document.querySelector('.projectsList');
     
-    // Create project object
-    const newProject = new ProjectObj(projectName.value);
-    userProjectsMain[projectName.value] = newProject;
-
-    // Populate project list in sidebar
-
-    let para = document.createElement('li');
-    // para.setAttribute('value', project.title);
-    para.textContent = newProject.title;
-
-    para.addEventListener('click', (e) => {
-      tasksArea.innerHTML = '';
-      const displayTitle = e.target.textContent;
-      tasksArea.append(displayProjectInTaskArea(displayTitle, userProjectsMain,));
+    cancelBtn.addEventListener('click', () => {;
+      blurScreen.classList.toggle('hide');
+      popupContainer.classList.toggle('hide');
+      document.querySelector('.inputProjectName').value = '';
     });
-
-    sidebarProjectList.append(para);
     
-    blurScreen.classList.toggle('hide');
-    popupContainer.classList.toggle('hide');
-    document.querySelector('.inputProjectName').value = '';
-  });
-}
+    addBtn.addEventListener('click', () => {
+      if (projectName.value === '') return;
+      
+      // Create project object
+      const newProject = new ProjectObj(projectName.value);
+      userProjectsMain[projectName.value] = newProject;
+      
+      // Populate project list in sidebar
+      
+      let sidbarProject = document.createElement('li');
+      // sidbarProject.setAttribute('value', project.title);
+      sidbarProject.textContent = newProject.title;
+      
+      sidbarProject.addEventListener('click', (e) => {
+        tasksArea.innerHTML = '';
+        const displayTitle = e.target.textContent;
+        tasksArea.append(displayProjectInTaskArea(displayTitle, userProjectsMain, createAddTaskBtn));
+        addTaskBtnFunctionality();
+      });
+      
+      sidebarProjectList.append(sidbarProject);
+      
+      blurScreen.classList.toggle('hide');
+      popupContainer.classList.toggle('hide');
+      document.querySelector('.inputProjectName').value = '';
+    });
+  }
+  
+  export const displayProjectInTaskArea = (
+    displayTitle,
+    userProjectsMain,
+    createAddTaskBtn
+    ) => {
+    const projectDiv = document.createElement('div');
+    
+    const title = document.createElement('h2');
+    title.textContent = displayTitle;
+    
+    const taskList = document.createElement('ul');
+    
+    let projectTaskList = document.createElement('ul');
+    for (let task of userProjectsMain[displayTitle].tasks) {
+      let listItem = document.createElement('li');
+      listItem.textContent = task;
+      taskList.append(listItem);
+    }
+    
+    const currentProject = userProjectsMain[title];
+    
+    projectDiv.append(title);
+    projectDiv.append(createAddTaskBtn());
+    projectDiv.append(taskList);
+    return projectDiv;
+  }
