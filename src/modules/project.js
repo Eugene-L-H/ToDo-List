@@ -6,7 +6,11 @@ export class ProjectObj {
 }
 
 export class TaskObj {
-  constructor(name, date, time, description, dueDate, priority) {
+  constructor(name, dueDate, time, notes, priority) {
     this.name = name;
+    this.dueDate = dueDate; 
+    this.time = time;
+    this.notes = notes;
+    this.priority = priority;
   }
 }

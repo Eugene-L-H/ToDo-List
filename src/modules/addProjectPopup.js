@@ -1,3 +1,5 @@
+import { createAddTaskForm } from "./addTaskButtonBehavior";
+
 export const addProjectPopup = () => {
   const popup = document.createElement('div');
   popup.classList.add('projectPopup');
@@ -41,16 +43,17 @@ export const popupBehavior = (blurScreen, popupContainer) => {
 
 const addTaskBtnFunctionality = () => {
   const addTaskBtn = document.querySelector('.add-task');
-
+  console.log(addTaskBtn);
   addTaskBtn.addEventListener('click', () => {
-    alert('Add Task');
+    const taskForm = createAddTaskForm();
+    console.log(taskForm);
   });
 }
 
 const createAddTaskBtn = () => {
-  const addTaskBtn = document.createElement('p');
+  const addTaskBtn = document.createElement('div');
   addTaskBtn.classList.add('add-task');
-  addTaskBtn.innerHTML = '<p class="add-task"><span class="red-plus">+</span> Add Task</p>';
+  addTaskBtn.innerHTML = '<p><span class="red-plus">+</span> Add Task</p>';
 
   return addTaskBtn;
 }

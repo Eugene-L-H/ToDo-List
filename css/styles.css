@@ -25,9 +25,6 @@ body {
   z-index: 1;
 }
 
-.hide {
-  display: none;
-}
 
 header {
   display: flex;
@@ -198,6 +195,23 @@ header {
 }
 /* End popup */
 
+/* "Add Task" Popup */
+.addTaskPopup {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  min-height: 450px;
+  min-width: 300px;
+  background-color: #fafafa;
+  border: solid 1px #ccc;
+  border-radius: 2%;
+  align-self: center;
+  z-index: 1;
+}
+/* End "Add Task" popup */
+
 #content {
   display: flex;
   flex-direction: column;
@@ -220,6 +234,7 @@ header {
 
 .add-task:hover {
   color: #db4c3f;
+  cursor: pointer;
 }
 
 .red-plus:hover {
@@ -255,15 +270,20 @@ header {
   .popupContainer {
     margin-top: 10vh;
   }
-
+  
   #sidebar {
     display: none;
   }
-
+  
 }
 
 @media screen and (min-width: 800px) {
   .mobileMenu {
     display: none;
   }
+}
+
+/* Dynamic classes */
+.hide {
+  display: none;
 }
